@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Hoisting</title>
+</head>
+<body>
+        Coding is <div id="magic"></div>
+    
+  <script>
+		var words = ["a lot of fun", "about not giving up", "challenging and empowering", "creative expression", "what I learned at CodingDojo!"],
+			el = document.getElementById('magic'),
+			word_counter = 0,
+			character_counter = 0;
+		function updateText()
+		{
+			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			if(character_counter == words[word_counter].length+1)
+			{
+				word_counter++; 	//choose a different word
+				character_counter = 0;	//start over with the first character of the word
+				el.innerHTML = '';  //set the html to be blank
+				//if we're displaying the last word, go back to the first word
+				if(word_counter == words.length)
+					word_counter = 0;
+			}
+		}
+		setInterval(updateText,300);
+    </script>
+</body>
+</html>

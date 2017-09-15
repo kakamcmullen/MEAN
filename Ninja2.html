@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja2</title>
+</head>
+<body>
+    	<script>
+            
+            var Ninja = function Ninja(name){
+                this.name = name;
+                this.health = 100;
+                var speed = 3;
+                var strength = 3;
+                
+                this.getstrength = function(){
+                return strength;
+            }
+                this.showStats = function(){
+                    console.log("Name: " + this.name + ", Health: " + this.health + ", Speed: " + speed + ", Strength: " + strength);
+                    return this;
+                }
+            }
+    
+            Ninja.prototype.sayName = function(){
+                console.log("My name is " + this.name);
+                return this;
+            }
+    
+            Ninja.prototype.drinkSake = function(){
+                this.health += 10;
+                return this;
+            }
+
+            Ninja.prototype.punch = function(ninja){
+                if(ninja instanceof Ninja){
+                ninja.health -= 5;
+                }
+                else{
+                    ninja.health -= 0;
+                }
+                console.log(ninja instanceof Ninja);
+                console.log(ninja2);
+                return this;
+            }
+
+            Ninja.prototype.kick = function(ninja01, ninja02){
+                if(ninja01 instanceof Ninja, ninja02 instanceof Ninja){
+                ninja01.health -= ninja02.getstrength() * 15;
+                }
+                else{
+                    ninja01.health -= 0;
+                }
+                console.log(ninja01 instanceof Ninja, ninja02 instanceof Ninja);
+                console.log(ninja1, ninja2)
+                return this;
+            }
+    
+            var ninja1 = new Ninja("Ninja-One");
+            var ninja2 = new Ninja("Ninja-Two");
+//            ninja1.sayName();
+//            ninja1.showStats();
+            ninja1.punch(ninja2);
+            ninja2.kick(ninja1, ninja2);
+            ninja1.showStats();
+            ninja2.showStats();
+    
+        </script>
+</body>
+</html>

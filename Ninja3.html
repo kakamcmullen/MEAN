@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja 3</title>
+</head>
+
+<body>
+    <script>
+        class Ninja {
+            constructor(name, health, speed, strength) {
+                this.name = name;
+                this.health = 100;
+                this.speed = 3;
+                this.strength = 3;
+            }
+            sayname() {
+                console.log(this.name)
+            }
+            showstats() {
+                console.log("Name: " + this.name + ", Health: " + this.health + ", Speed: " + this.speed + ", Strength: " + this.strength)
+            }
+            drinksake() {
+                this.health += 10;
+                console.log(this.health)
+            }
+        }
+        class Sensei extends Ninja {
+            constructor(name, health, speed, strength, wisdom) {
+                super(name, health, speed, strength)
+                this.health = 200;
+                this.speed = 10;
+                this.strength = 10;
+                this.wisdom = 10;
+            }
+            showstats() {
+                console.log("Name: " + this.name + ", Health: " + this.health + ", Speed: " + this.speed + ", Strength: " + this.strength + ", Wisdom: " + this.wisdom)
+            }
+            speakwisdom() {
+                super.drinksake();
+                console.log("Increased health + 10");
+                console.log(this.health);
+            }
+        }
+
+        let sensei1 = new Sensei("Sensei-One");
+        sensei1.showstats();
+        sensei1.speakwisdom();
+        // let ninja1 = new Ninja("Ninja-One");
+        // ninja1.sayname();
+        // ninja1.showstats();
+        // ninja1.drinksake();
+    </script>
+</body>
+
+</html>

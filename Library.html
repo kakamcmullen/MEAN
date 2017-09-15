@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Library</title>
+</head>
+<body>
+    <script>
+        var _ = {
+            map: function(array, callback) {
+                //code here;
+                for(var number = 0 ; number < array.length ; number++){
+                    console.log(callback(array[number]));
+                }
+            },
+            
+            reduce: function(array, callback, memo){
+                // code here;
+                var el = 0;
+                    if (!memo){
+                        memo = array[0];
+                        el = 1;
+                    }
+                for (var i = el; i < array.length; i++) {
+                    memo = callback(array[i], memo);
+                }
+                console.log(memo);
+                return memo;
+            },
+            
+            find: function(array, callback){
+                for (var number = 0; number < array.length; number++) {
+                    if (callback(array[number])){
+                        return array[number];
+                    }
+                }
+            },
+            
+            filter: function(array, callback) { 
+                // code here;
+                var newArray = [];
+                for(var number = 1; number < array.length+1; number ++){
+                    if(callback(number)){
+                        newArray.push(number)
+                    }
+                }
+                console.log(newArray);
+                return newArray;     
+            },
+            
+            reject: function(array, callback){
+                var newArray =[];
+                for(var number = 0; number < array.length; number++){
+                    if (!callback(array[number])){
+                        newArray.push(array[number]);
+                    }
+                }
+                console.log(newArray);
+                return newArray;
+            }
+        }
+    
+        // you just created a library with 5 methods!
+        var array = [1,2,3,4,5,6,7,8];
+        _.map(array, function callback(x){return x * 5 ;});
+        _.reduce(array, function(x, memo){return x + memo});
+        _.find(array, function(x){return x == 5});
+        console.log(_.find(array, function(x){return x == 5}));
+        _.filter(array, function(x){return x % 2 == 0});
+        _.filter(array, function(x){return x % 2 == 1});
+        _.reject(array, function(x){return x % 2 == 0});
+        _.reject(array, function(x){return x % 2 == 1});
+    </script>
+</body>
+</html>

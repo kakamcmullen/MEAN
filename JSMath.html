@@ -1,0 +1,53 @@
+<!-- 
+-->
+<script>
+    function zero_negativity(arr) {
+        for (var x = 0; x < arr.length; x++) {
+            if (arr[x] < 0) {
+                return false;
+            }
+            else if (arr[x] > 0) {
+                return true;
+            }
+        }
+    }
+    function is_even(num) {
+        if (num % 2 === 0) {
+            return true;
+        }
+        else if (num % 2 !== 0) {
+            return false;
+        }
+    }
+    function how_many_even(arr) {
+        var count = 0
+        for (var x = 0; x < arr.length; x++) {
+            if (arr[x] % 2 === 0) {
+                count += 1;
+            }
+        }
+        return count;
+        
+    }
+    function create_dummy_array(num) {
+        var NewArray = [];
+        for (let count = 0; count <= num; count++) {
+            NewArray.push(Math.floor(Math.random() * 10))
+        }
+        return NewArray
+    }
+    function random_choice(arr) {
+
+        var random = arr[(Math.floor(Math.random() * arr.length))]
+
+        return random
+    }
+    var arr = [1, 4, 7, 9, 12];
+    var num = 16;
+    console.log(zero_negativity(arr));
+    console.log(is_even(num));
+    console.log(how_many_even(arr));
+    console.log(create_dummy_array(num));
+    console.log(random_choice(arr));
+
+</script>
