@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modify Wolf</title>
+</head>
+<body>
+    <h1>Edit #<%= wolf.name %>!</h1>
+    <form action= "/<%= wold.id %>" method='post'>
+        Name: <input type="text" name="name" value="<%=wolf.name %>">
+        Location: <input type="text" name="location" value="<%=wolf.location %>">
+        Food Source: <input type="text" name="food_source" value="<%=wolf.food_source %>">
+        Weight: <input type="text" name="weight" value="<%=wolf.weight %>">
+        <input type="submit" value="Edit Wolf">
+    </form>
+    <a href="/">Home</a>
+</body>
+</html>

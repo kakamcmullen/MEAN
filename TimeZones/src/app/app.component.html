@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Time Zones
+  </title>
+</head>
+<body>
+  <h1>US Time Zone Display</h1>
+  <section>
+    <button (click)="getDateByZone('HST')"[ngClass]="{selected: SelectedZone === 'HST'}">HAWAII</button>
+    <button (click)="getDateByZone('AST')"[ngClass]="{selected: SelectedZone === 'AST'}">ALASKA</button>
+    <button (click)="getDateByZone('PST')"[ngClass]="{selected: SelectedZone === 'PST'}">PACIFIC</button>
+    <button (click)="getDateByZone('MST')"[ngClass]="{selected: SelectedZone === 'MST'}">MOUNTAIN</button>
+    <button (click)="getDateByZone('CST')"[ngClass]="{selected: SelectedZone === 'CST'}">CENTRAL</button>
+    <button (click)="getDateByZone('EST')"[ngClass]="{selected: SelectedZone === 'EST'}">EASTERN</button>
+  </section>
+  <h1>{{time | date:'medium'}}</h1>
+</body>
+</html>

@@ -5,8 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Message Board</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+	</script>
 </head>
 <body>
     <h1>Message Board</h1>
+    <div id="top">
+		<h3>The Dojo Message Board</h3>
+	</div>
+	<form action="/message" method="post">
+		<p>Name: <input type="text" name="name">
+		<p>Message: <textarea name="message"></textarea>
+		<input id="post" type="submit" value="Post message">
+	</form>
+	 <% if(typeof(errors) != 'undefined' ) { %>
+	     <% for (let x in errors) { %>
+	      <h3><%= errors[x].message %></h3>
+	     <% } %>
+ 	 <% } else { %>
+ 	 	<div>
+			<% for(let x in messages) { %>
+				<div>
+					<h3>Name: <%= messages[x].name %></h3>
+					<h3>Message: <%= messages[x].message %></h3>
+					<% for (let y = 0; y < messages[x]._comments.length; y++) { %>
+						<h5><%="Name: " + messages[x]._comments[y].name %></h5>
+						<h5><%="Comment: " + messages[x]._comments[y].text %></h5>
+					<% } %>
+
+					<form action=<%="/comment/" + messages[x]._id %> method="post">
+						<p class="margin">Name: </p><input class="comment_input" type="text" name="name">
+						<p class="margin">Comment: </p><textarea class="comment_text"name="comment"></textarea>
+						<input class="post2" type="submit" value="Post comment">
+					</form>
+				</div>
+			<% } %>
+		</div>
+ 	<% } %>
+
 </body>
 </html>
+<style type="text/css">
+    
+    *{
+        font-family: geneva;
+    }
+    #top{
+        border-bottom: 1px solid black;
+        width: 90%;
+    }
+    input, textarea{
+        display: block;
+        margin-bottom: 2em;
+    }
+    textarea{
+        width: 60%;
+        height: 10em;
+    }
+    h5, .comment_input {
+        margin-left: 12%;
+    }
+    #post {
+        color:white;
+        background-color: blue;
+        margin-left: 36.7%;
+        width:15em;
+        height: 3em;
+    }
+    .comment_text {
+        width: 40%;
+        height: 6em;
+        margin-left: 12%; 
+    }
+    .margin{
+        margin-left: 12%;
+        margin-bottom: -.1em;
+    }
+    .post2 {
+        color:white;
+        background-color: green;
+        margin-left: 33.2%;
+        width:12em;
+        height: 2.5em;
+    }
+    </style>

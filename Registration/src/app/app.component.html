@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Registration Form</title>
+</head>
+<body>
+   <h1>{{ title }}</h1>
+   <div class="valid" *ngIf="valid_reg_display"> 
+    <p>
+      Thank you for registering with us {{ user.FirstName }}. We just sent
+      you a confirmation email at: {{ user.Email }}, and we will send all mail
+      to {{ user.Address }}, {{ user.Unit }}, {{ user.City }} {{ user.State }}     
+    </p>
+  </div>
+    <p>Have a wonderful day!</p> 
+    <h3>Account Information</h3>  
+    <p>
+        <span class="valid" *ngIf="formData.pristine">Please complete your registration form</span><br>
+        <span class="error" *ngIf="!formData.valid">** Indicates a registration error or field criteria unmet.</span>
+        <span class="valid" *ngIf="formData.valid">Form Successfully Completed</span>
+<!--       {{ formData.errors | json }}
+      {{ formData.valid | json }} -->
+    </p>
+    <form (submit)="onSubmit()" #formData='ngForm'>
+      First Name: <input 
+        type="text" 
+        name="FirstName" 
+        required 
+        minlength="4" 
+        maxlength="24"
+        [(ngModel)]="user.FirstName"
+        #FirstName='ngModel'
+      />
+      <span class="error" *ngIf="!FirstName.valid">**First name is required</span>
+      <span class="valid" *ngIf="FirstName.valid">&#10003;</span>
+<!--       {{ FirstName.errors | json }}
+      {{ FirstName.valid | json }} --> <br>
+      Last Name: <input 
+        type="text" 
+        name="LastName" 
+        required 
+        minlength="4" 
+        maxlength="24"
+        [(ngModel)]="user.LastName"
+        #LastName='ngModel'
+      />
+      <span class="error" *ngIf="!LastName.valid">**Last name is required</span>
+      <span class="valid" *ngIf="LastName.valid">&#10003;</span>
+<!--       {{ LastName.errors | json }}
+      {{ LastName.valid | json }} --><br>
+      Email: <input 
+        type="text" 
+        name="Email" 
+        required 
+        minlength="4" 
+        maxlength="24"
+        [(ngModel)]="user.Email"
+        #Email='ngModel'
+        />
+        <span class="error" *ngIf="!Email.valid">**Email must be Valid</span>
+        <span class="valid" *ngIf="Email.valid">&#10003;</span>
+<!--       {{ Email.errors | json }}
+      {{ Email.valid | json }} --> <br>
+      Password: <input 
+        type="text" 
+        name="Password" 
+        required 
+        minlength="8" 
+        maxlength="16"
+        pattern="^([a-zA-Z0-9@*#]{8,15})$"
+        [(ngModel)]="user.Password"
+        #Password='ngModel'
+        />
+        <span class="error" *ngIf="!Password.valid">**Password minimum length is 16 characters</span>
+        <span class="valid" *ngIf="Password.valid">&#10003;</span>
+<!--       {{ Password.errors | json }}
+      {{ Password.valid | json }} --><br>
+      Password Confirmation: <input 
+        type="text" 
+        name="PasswordConfirmation" 
+        required 
+        minlength="10" 
+        maxlength="24"
+        pattern="^([a-zA-Z0-9@*#]{8,15})$"
+        [(ngModel)]="user.PasswordConfirmation"
+        #PasswordConfirmation='ngModel'
+        />
+        <span class="error" *ngIf="!PasswordConfirmation.valid">**Password confirmation must match password</span>
+        <span class="valid" *ngIf="PasswordConfirmation.valid">&#10003;</span>
+<!--       {{ PasswordConfirmation.errors | json }}
+      {{ PasswordConfirmation.valid | json }} --> <br>
+      Address: <input 
+        type="text" 
+        name="Address" 
+        required 
+        minlength="4" 
+        maxlength="24"
+        [(ngModel)]="user.Address"
+        #Address='ngModel'
+        />
+        <span class="error" *ngIf="!Address.valid">**Address is required</span>
+        <span class="valid" *ngIf="Address.valid">&#10003;</span>
+<!--       {{ Address.errors | json }}
+      {{ Address.valid | json }} --><br>
+      Apt/Unit: <input 
+        type="text" 
+        name="Unit" 
+        minlength="4" 
+        maxlength="24"
+        [(ngModel)]="user.Unit"
+        #Unit='ngModel'
+        />
+        <span class="valid" *ngIf="Unit.touched">&#10003;</span>
+<!--       {{ Unit.errors | json }}
+      {{ Unit.valid | json }} --><br>
+      City: <input 
+        type="text" 
+        name="City" 
+        required 
+        minlength="4" 
+        maxlength="24"
+        [(ngModel)]="user.City"
+        #City='ngModel'
+        />
+        <span class="error" *ngIf="!City.valid">**City is required</span>
+        <span class="valid" *ngIf="City.valid">&#10003;</span>
+<!--       {{ City.errors | json }}
+      {{ City.valid | json }} --><br>
+      State: <select
+        type="text" 
+        name="State" 
+        required 
+        minlength="4" 
+        maxlength="24"
+        [(ngModel)]="user.State"
+        #State='ngModel'>
+        <option *ngFor="let state of states" [value]="state">{{state}}</option>
+      </select>
+      <span class="error" *ngIf="State.untouched">**state is required</span>
+
+      <br>
+      Are You Feeling Good Today?<input 
+        type="text" 
+        name="Feeling" 
+        required 
+        minlength="4" 
+        maxlength="24"
+        [(ngModel)]="user.Feeling"
+        #Feeling='ngModel'
+        />
+        <span class="error" *ngIf="!Feeling.valid">** Choosing how you feel is required</span>
+        <span class="valid" *ngIf="Feeling.valid">&#10003;</span>
+<!--       {{ Feeling.errors | json }}
+      {{ Feeling.valid | json }} --><br>
+      <section>
+        <input type="submit" value="Register" class= "error" *ngIf="!formData.valid">
+        <input type="submit" value="Register" class= "valid" *ngIf="formData.valid">
+      </section>
+    </form>
+  </div>
+  
+</body>
+</html>

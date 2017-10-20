@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>my_first_db</title>
+    <title>The Wolf Pack</title>
 </head>
+
 <body>
-    <h1>My First DB</h1>
+    <h1>The Wolf Pack Index Page</h1>
+    <a href="/new">Add New Wolf</a>
+    <% for (idx in wolf){ %>
+        Name:
+        <a href="/<%= wolf[idx]._id %>">
+            <%= wolf[idx].name %>
+        </a>
+        <a href="/<%= wolf[idx]._id %>/edit/">Change Wolf</a>
+        <form action="/<% wolf[idx]._id %>/delete/" method='post' . <input type="submit" value="Delete">
+        </form>
+    <% } %>
 </body>
+
 </html>

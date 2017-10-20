@@ -1,0 +1,33 @@
+h1 {
+    height: 100px;
+    text-align: center;
+    background-color: purple;
+    padding-top: 50px;
+    padding-bottom: 25px;
+    color: greenyellow;
+}
+
+section {
+    height: 100px;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 25px;
+    padding-right: 50px;
+    background-color: #C12727;
+}
+
+button {
+    width: 150px;
+    height: 50px;
+    margin-left: 25px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.selected {
+    background-color: greenyellow;
+}
+
+body {
+    background-color: black;
+}

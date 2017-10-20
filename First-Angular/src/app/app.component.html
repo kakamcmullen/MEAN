@@ -1,0 +1,22 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:left">
+  <h1>
+    {{title}}!
+  </h1>
+  
+  <table border="1">
+    <tr>
+      <th>EMAIL </th>
+      <th>IMPORTANCE </th>
+      <th>SUBJECT </th>
+      <th>Contact </th>
+    </tr>
+    <tr *ngFor="let contact of contacts">
+      <td>{{contact.email | lowercase}}</td>
+      <td *ngIf="contact.importance">High</td>
+      <td *ngIf="!contact.importance">Low</td>
+      <td>{{contact.subject | lowercase}}</td>
+      <td>{{contact.content | lowercase}}</td>
+    </tr>
+  </table>
+</div>

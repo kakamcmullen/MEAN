@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Show Page</title>
+</head>
+<body>
+    <h1>Show Wolf</h1>
+    Name: <%= wolf.name %><br>
+    Location: <%=wolf.location %><br>
+    Food Source: <%=wolf.food_source %><br>
+    Weight: <%=wolf.weight %><br>
+
+    <a href="/">Home</a> <br>
+    <a href="/<%= wolf._id %>/edit">Edit</a>
+
+</body>
+</html>

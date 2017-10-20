@@ -42,54 +42,46 @@ app.use(flash());
 
 //==========================Static Folder======================
 // setting up our static folder
-app.use(express.static(path.join(__dirname, "./static")));
+app.use(express.static(path.join(__dirname, "./client/static")));
 
 //==========================Morgan/Morgan-Debugger=============
 // Require Morgan 
 var morgan = require('morgan');
 // Select type of morgan debugger
- morgan('tiny');
- // Require morgan-debugger
- var morganDebug = require('morgan-debug');
+morgan('tiny');
+// Require morgan-debugger
+var morganDebug = require('morgan-debug');
 // Setting up morgan-debugger
- app.use(morganDebug("Morgan", 'tiny'));
+app.use(morganDebug("Morgan", 'tiny'));
 
 //==========================Body-Parser========================
 // Require body-parser (to receive post data from clients)
 var bodyParser = require('body-parser');
 // setting up body-parser
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //===========================  EJS  ===========================
 // setting our views folder
-app.set('views', path.join(__dirname, './views'));
+app.set('views', path.join(__dirname, './client/views'));
 // setting up ejs 
 app.set('view engine', 'ejs');
 // root route to render the index.ejs view
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     res.render("index");
 })
 
 //===========================Mongoose==========================
 // Require mongoose
-var mongoose = require('mongoose');
-//setting up db connection through mongoose
-mongoose.connect('mongodb://localhost/tester');// tester is the name of our database in mongodb
-//the order of everything related to mongoose (require --> connect --> Schema --> Model --> route)
-
+require('./server/config/mongoose.js');
 //===========================Routes============================
-// post route for adding a user
-app.post('/users', function(req, res) {
- console.log("POST DATA", req.body);
- // This is where we would add the user to the database
- // Then redirect to the root route
- res.redirect('/');
-})
+
+var routes_setter = require('./server/config/routes.js');
+// invoke the function stored in routes_setter and pass it the "app" variable
+routes_setter(app);
+// END OF ROUTING...
 
 //===========================Server Listening==================
-//we're going to have /routes/index.js handle all of our routing
-var route = require('./routes/index.js')(app);
 // setting server to run on port 3000
-app.listen(3000, function() {
- console.log("listening on port 3000!");
+app.listen(8000, function () {
+    console.log("listening on port 8000!");
 })
